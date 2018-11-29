@@ -1,4 +1,4 @@
-package fantasy.category;
+package fantasy.player.spellcaster;
 
 public class Creature {
 

@@ -1,4 +1,4 @@
-import fantasy.category.Creature;
+import fantasy.player.spellcaster.Creature;
 import org.junit.Before;
 import org.junit.Test;
 

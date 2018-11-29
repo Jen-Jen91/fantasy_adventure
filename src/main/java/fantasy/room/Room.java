@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 public class Room {
  private ArrayList<Enemy> enemies;
- private ArrayList<Player> players;
+ //private ArrayList<Player> players;
  Treasure treasure;
 
  public Room(Treasure treasure){
      this.enemies = new ArrayList<>();
-     this.players = new ArrayList<>();
+     //this.players = new ArrayList<>();
      this.treasure = treasure;
  }
 
@@ -22,12 +22,12 @@ public class Room {
  public Treasure getTreasure(){
      return this.treasure;
  }
-    public int countPlayers(){
-        return this.players.size();
-    }
-    public void addPlayer(Player player) {
-        this.players.add(player);
+//    public int countPlayers(){
+//        return this.players.size();
+//    }
+//    public void addPlayer(Player player) {
+//        this.players.add(player);
+//
+//    }
 
-    }
- 
 }
