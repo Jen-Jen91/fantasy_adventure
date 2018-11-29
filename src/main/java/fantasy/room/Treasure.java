@@ -12,6 +12,7 @@ public class Treasure {
     public String getType(){
         return this.type;
     }
+
     public int getValue(){
         return this.value;
     }

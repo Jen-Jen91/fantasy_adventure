@@ -12,7 +12,8 @@ public class Enemy {
     public String getSpecies(){
         return this.species;
     }
+
     public int getStrength(){
-    return this.strength;
+        return this.strength;
     }
 }
