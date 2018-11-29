@@ -17,20 +17,24 @@ public abstract class Player {
         this.equipment = equipment;
         this.treasure = new ArrayList<>();
     }
+
     public int getHP(){
         return this.HP;
     }
+
     public int getStrength(){
         return this.strength;
     }
+
     public String getEquipment(){
         return this.equipment;
     }
+
     public int countTreasure(){
         return this.treasure.size();
     }
-    public void addTreasure(Treasure treasure){
-        this.treasure.add(treasure);
+
+    public void addTreasure(Treasure treasure){ this.treasure.add(treasure);
     }
 
 
