@@ -71,4 +71,21 @@ public class RoomTest {
         assertEquals(3, room.countPlayers());
     }
 
+    @Test
+    public void canClearEnemies() {
+        room.addEnemy(enemy1);
+        room.addEnemy(enemy2);
+        room.clearEnemies();
+        assertEquals(0, room.countEnemies());
+    }
+
+    @Test
+    public void canClearPlayers() {
+        room.addPlayer(player1);
+        room.addPlayer(player2);
+        room.addPlayer(player3);
+        room.clearPlayers();
+        assertEquals(0, room.countPlayers());
+    }
+
 }

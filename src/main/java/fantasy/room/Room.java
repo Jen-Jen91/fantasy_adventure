@@ -35,4 +35,12 @@ public class Room {
         this.players.add(player);
     }
 
+    public void clearEnemies() {
+        this.enemies.clear();
+    }
+
+    public void clearPlayers() {
+        this.players.clear();
+    }
+
 }
