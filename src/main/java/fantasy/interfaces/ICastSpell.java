@@ -1,7 +1,9 @@
 package fantasy.interfaces;
 
+import fantasy.room.Enemy;
+
 public interface ICastSpell {
 
-    public void castSpell();
+    public String castSpell(Enemy enemy);
 
 }
