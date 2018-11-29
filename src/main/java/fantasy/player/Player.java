@@ -34,4 +34,7 @@ public abstract class Player {
     }
 
 
+    public void setHP(int newHP){
+        this.HP = newHP;
+    }
 }
