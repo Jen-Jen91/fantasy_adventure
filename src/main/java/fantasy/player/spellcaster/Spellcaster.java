@@ -1,5 +1,4 @@
 package fantasy.player.spellcaster;
-
 import fantasy.interfaces.ICastSpell;
 import fantasy.player.Player;
 import fantasy.room.Enemy;

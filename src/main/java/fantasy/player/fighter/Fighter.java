@@ -1,5 +1,4 @@
 package fantasy.player.fighter;
-
 import fantasy.interfaces.IFight;
 import fantasy.player.Player;
 import fantasy.room.Enemy;

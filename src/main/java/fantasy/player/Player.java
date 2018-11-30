@@ -1,7 +1,5 @@
 package fantasy.player;
-
 import fantasy.room.Treasure;
-
 import java.util.ArrayList;
 
 public abstract class Player {
@@ -18,27 +16,27 @@ public abstract class Player {
         this.treasure = new ArrayList<>();
     }
 
-    public int getHP(){
+    public int getHP() {
         return this.HP;
     }
 
-    public int getStrength(){
+    public int getStrength() {
         return this.strength;
     }
 
-    public String getEquipment(){
+    public String getEquipment() {
         return this.equipment;
     }
 
-    public int countTreasure(){
+    public int countTreasure() {
         return this.treasure.size();
     }
 
-    public void addTreasure(Treasure treasure){ this.treasure.add(treasure);
+    public void addTreasure(Treasure treasure) {
+        this.treasure.add(treasure);
     }
 
-
-    public void setHP(int newHP){
+    public void setHP(int newHP) {
         this.HP = newHP;
     }
 }
