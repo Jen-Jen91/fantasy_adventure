@@ -1,18 +1,26 @@
 package fantasy.player.healer;
 import fantasy.interfaces.IHeal;
 import fantasy.player.Player;
+import fantasy.player.fighter.WeaponType;
 
 public abstract class Healer extends Player implements IHeal {
 
-    public Healer(int HP, int strength, String equipment) {
-        super(HP, strength, equipment);
+    protected ToolType tool;
+
+    public Healer(int HP, int strength, ToolType tool) {
+        super(HP, strength);
+        this.tool = tool;
     }
 
     public String heal(Player player) {
         int HP = player.getHP();
-        int newHP = HP + 5;
+        int newHP = HP + this.tool.getValue();
         player.setHP(newHP);
         return "Player has been healed!";
+    }
+
+    public ToolType getTool() {
+        return this.tool;
     }
 
 }

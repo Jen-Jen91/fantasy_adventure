@@ -1,4 +1,5 @@
 import fantasy.player.fighter.Dwarf;
+import fantasy.player.fighter.WeaponType;
 import fantasy.room.Enemy;
 import fantasy.room.Treasure;
 import org.junit.Before;
@@ -16,7 +17,7 @@ public class DwarfTest {
 
     @Before
     public void before() {
-        dwarf = new Dwarf(50, 30, "axe");
+        dwarf = new Dwarf(50, 30, WeaponType.AXE);
         treasure = new Treasure("gold", 100);
         enemy1 = new Enemy("Orc", 20);
         enemy2 = new Enemy("Ogre", 30);
@@ -35,7 +36,7 @@ public class DwarfTest {
 
     @Test
     public void hasEquipment() {
-        assertEquals("axe", dwarf.getEquipment());
+        assertEquals(WeaponType.AXE, dwarf.getWeapon());
     }
 
     @Test
@@ -63,6 +64,12 @@ public class DwarfTest {
     public void canFightLose() {
         assertEquals("Enemy wins!", dwarf.fight(enemy3));
         assertEquals(40, dwarf.getHP());
+    }
+
+    @Test
+    public void weaponCanIncreaseStrength() {
+        dwarf.increaseStrength();
+        assertEquals(80, dwarf.getStrength());
     }
 
 }

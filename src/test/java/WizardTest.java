@@ -1,4 +1,5 @@
 import fantasy.player.spellcaster.Creature;
+import fantasy.player.spellcaster.SpellType;
 import fantasy.player.spellcaster.Witch;
 import fantasy.player.spellcaster.Wizard;
 import fantasy.room.Enemy;
@@ -10,22 +11,23 @@ import static org.junit.Assert.assertEquals;
 
 public class WizardTest {
 
-        Wizard wizard;
-        Creature creature;
-        Treasure treasure;
-        Enemy enemy1;
-        Enemy enemy2;
-        Enemy enemy3;
+    Wizard wizard;
+    Creature creature;
+    Treasure treasure;
+    Enemy enemy1;
+    Enemy enemy2;
+    Enemy enemy3;
 
-        @Before
-        public void before() {
-            creature = new Creature("Raven", 20);
-            wizard = new Wizard(70, 50, "staff", creature);
-            treasure = new Treasure("gold", 100);
-            enemy1 = new Enemy("Orc", 20);
-            enemy2 = new Enemy("Ogre", 50);
-            enemy3 = new Enemy("Werewolf", 70);
-        }
+    @Before
+    public void before() {
+        creature = new Creature("Raven", 20);
+        wizard = new Wizard(70, 50, SpellType.LIGHTNING_STRIKE, creature);
+        treasure = new Treasure("gold", 100);
+        enemy1 = new Enemy("Orc", 20);
+        enemy2 = new Enemy("Ogre", 50);
+        enemy3 = new Enemy("Werewolf", 70);
+    }
+
     @Test
     public void hasHP() {
         assertEquals(70, wizard.getHP());
@@ -38,13 +40,14 @@ public class WizardTest {
 
     @Test
     public void hasEquipment() {
-        assertEquals("staff", wizard.getEquipment());
+        assertEquals(SpellType.LIGHTNING_STRIKE, wizard.getSpell());
     }
 
     @Test
     public void hasCreature() {
         assertEquals(creature, wizard.getCreature());
     }
+
     @Test
     public void creatureCanAddStrength() {
         wizard.creatureAddsStrength();
@@ -61,6 +64,7 @@ public class WizardTest {
         wizard.addTreasure(treasure);
         assertEquals(1, wizard.countTreasure());
     }
+
     @Test
     public void canCastSpellWin() {
         assertEquals("Player wins!", wizard.castSpell(enemy1));
@@ -75,6 +79,12 @@ public class WizardTest {
     public void canCastSpellLose() {
         assertEquals("Enemy wins!", wizard.castSpell(enemy3));
         assertEquals(50, wizard.getHP());
+    }
+
+    @Test
+    public void spellCanIncreaseStrength() {
+        wizard.increaseStrength();
+        assertEquals(100, wizard.getStrength());
     }
 
 }

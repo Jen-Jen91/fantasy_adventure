@@ -6,13 +6,11 @@ public abstract class Player {
 
     protected int HP;
     protected int strength;
-    protected String equipment;
     protected ArrayList<Treasure> treasure;
 
-    public Player(int HP, int strength, String equipment) {
+    public Player(int HP, int strength) {
         this.HP = HP;
         this.strength = strength;
-        this.equipment = equipment;
         this.treasure = new ArrayList<>();
     }
 
@@ -22,10 +20,6 @@ public abstract class Player {
 
     public int getStrength() {
         return this.strength;
-    }
-
-    public String getEquipment() {
-        return this.equipment;
     }
 
     public int countTreasure() {

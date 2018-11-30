@@ -1,4 +1,5 @@
 import fantasy.player.spellcaster.Creature;
+import fantasy.player.spellcaster.SpellType;
 import fantasy.player.spellcaster.Witch;
 import fantasy.room.Enemy;
 import fantasy.room.Treasure;
@@ -19,7 +20,7 @@ public class WitchTest {
     @Before
     public void before() {
         creature = new Creature("Cat", 10);
-        witch = new Witch(70, 50, "wand", creature);
+        witch = new Witch(70, 50, SpellType.FIREBALL, creature);
         treasure = new Treasure("gold", 100);
         enemy1 = new Enemy("Orc", 20);
         enemy2 = new Enemy("Ogre", 50);
@@ -38,7 +39,7 @@ public class WitchTest {
 
     @Test
     public void hasEquipment() {
-        assertEquals("wand", witch.getEquipment());
+        assertEquals(SpellType.FIREBALL, witch.getSpell());
     }
 
     @Test
@@ -77,6 +78,12 @@ public class WitchTest {
     public void canCastSpellLose() {
         assertEquals("Enemy wins!", witch.castSpell(enemy3));
         assertEquals(50, witch.getHP());
+    }
+
+    @Test
+    public void spellCanIncreaseStrength() {
+        witch.increaseStrength();
+        assertEquals(90, witch.getStrength());
     }
 
 }

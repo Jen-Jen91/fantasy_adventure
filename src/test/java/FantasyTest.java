@@ -1,6 +1,7 @@
 import fantasy.Fantasy;
 import fantasy.player.Player;
 import fantasy.player.fighter.Dwarf;
+import fantasy.player.fighter.WeaponType;
 import fantasy.room.Room;
 import fantasy.room.Treasure;
 import org.junit.Before;
@@ -19,7 +20,7 @@ public class FantasyTest {
         fantasy = new Fantasy();
         treasure = new Treasure("Gem", 150);
         room = new Room(treasure);
-        player = new Dwarf(23, 67, "axe");
+        player = new Dwarf(23, 67, WeaponType.AXE);
 
     }
 

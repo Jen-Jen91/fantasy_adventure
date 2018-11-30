@@ -1,4 +1,5 @@
 import fantasy.player.fighter.Knight;
+import fantasy.player.fighter.WeaponType;
 import fantasy.room.Enemy;
 import fantasy.room.Treasure;
 import org.junit.Before;
@@ -16,7 +17,7 @@ public class KnightTest {
 
     @Before
     public void before() {
-        knight = new Knight(120, 60, "sword");
+        knight = new Knight(120, 60, WeaponType.SWORD);
         treasure = new Treasure("gold", 100);
         enemy1 = new Enemy("Orc", 20);
         enemy2 = new Enemy("Ogre", 60);
@@ -35,7 +36,7 @@ public class KnightTest {
 
     @Test
     public void hasEquipment() {
-        assertEquals("sword", knight.getEquipment());
+        assertEquals(WeaponType.SWORD, knight.getWeapon());
     }
 
     @Test
@@ -65,5 +66,10 @@ public class KnightTest {
         assertEquals(90, knight.getHP());
     }
 
+    @Test
+    public void weaponCanIncreaseStrength() {
+        knight.increaseStrength();
+        assertEquals(100, knight.getStrength());
+    }
 
 }

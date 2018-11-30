@@ -5,8 +5,11 @@ import fantasy.room.Enemy;
 
 public abstract class Fighter extends Player implements IFight {
 
-    public Fighter(int HP, int strength, String equipment) {
-        super(HP, strength, equipment);
+    protected WeaponType weapon;
+
+    public Fighter(int HP, int strength, WeaponType weapon) {
+        super(HP, strength);
+        this.weapon = weapon;
     }
 
     public String fight(Enemy enemy) {
@@ -18,6 +21,14 @@ public abstract class Fighter extends Player implements IFight {
             return "Enemy wins!";
         }
         return "It's a draw!";
+    }
+
+    public WeaponType getWeapon() {
+        return this.weapon;
+    }
+
+    public void increaseStrength() {
+        this.strength += this.weapon.getValue();
     }
 
 }

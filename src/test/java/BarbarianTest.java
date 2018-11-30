@@ -1,5 +1,5 @@
 import fantasy.player.fighter.Barbarian;
-import fantasy.player.fighter.Dwarf;
+import fantasy.player.fighter.WeaponType;
 import fantasy.room.Enemy;
 import fantasy.room.Treasure;
 import org.junit.Before;
@@ -16,7 +16,7 @@ public class BarbarianTest {
 
     @Before
     public void before() {
-        barbarian = new Barbarian(100, 50, "club");
+        barbarian = new Barbarian(100, 50, WeaponType.CLUB);
         treasure = new Treasure("gold", 100);
         enemy1 = new Enemy("Orc", 20);
         enemy2 = new Enemy("Ogre", 50);
@@ -35,7 +35,7 @@ public class BarbarianTest {
 
     @Test
     public void hasEquipment() {
-        assertEquals("club", barbarian.getEquipment());
+        assertEquals(WeaponType.CLUB, barbarian.getWeapon());
     }
 
     @Test
@@ -62,6 +62,12 @@ public class BarbarianTest {
     public void canFightLose() {
         assertEquals("Enemy wins!", barbarian.fight(enemy3));
         assertEquals(10, barbarian.getHP());
+    }
+
+    @Test
+    public void weaponCanIncreaseStrength() {
+        barbarian.increaseStrength();
+        assertEquals(80, barbarian.getStrength());
     }
 
 }
