@@ -7,8 +7,8 @@ public abstract class Healer extends Player implements IHeal {
 
     protected ToolType tool;
 
-    public Healer(int HP, int strength, ToolType tool) {
-        super(HP, strength);
+    public Healer(int HP, int attack, int defence, ToolType tool) {
+        super(HP, attack, defence);
         this.tool = tool;
     }
 

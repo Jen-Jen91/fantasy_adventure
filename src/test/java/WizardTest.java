@@ -1,6 +1,5 @@
 import fantasy.player.spellcaster.Creature;
 import fantasy.player.spellcaster.SpellType;
-import fantasy.player.spellcaster.Witch;
 import fantasy.player.spellcaster.Wizard;
 import fantasy.room.Enemy;
 import fantasy.room.Treasure;
@@ -21,11 +20,11 @@ public class WizardTest {
     @Before
     public void before() {
         creature = new Creature("Raven", 20);
-        wizard = new Wizard(70, 50, SpellType.LIGHTNING_STRIKE, creature);
+        wizard = new Wizard(70, 50, 20, SpellType.LIGHTNING_STRIKE, creature);
         treasure = new Treasure("gold", 100);
-        enemy1 = new Enemy("Orc", 20);
-        enemy2 = new Enemy("Ogre", 50);
-        enemy3 = new Enemy("Werewolf", 70);
+        enemy1 = new Enemy("Orc", 20, 20);
+        enemy2 = new Enemy("Ogre", 50, 30);
+        enemy3 = new Enemy("Werewolf", 70, 40);
     }
 
     @Test
@@ -34,8 +33,13 @@ public class WizardTest {
     }
 
     @Test
-    public void hasStrength() {
-        assertEquals(50, wizard.getStrength());
+    public void hasAttack() {
+        assertEquals(50, wizard.getAttack());
+    }
+
+    @Test
+    public void hasDefence() {
+        assertEquals(20, wizard.getDefence());
     }
 
     @Test
@@ -49,9 +53,9 @@ public class WizardTest {
     }
 
     @Test
-    public void creatureCanAddStrength() {
-        wizard.creatureAddsStrength();
-        assertEquals(70, wizard.getStrength());
+    public void creatureCanAddDefence() {
+        wizard.creatureAddsDefence();
+        assertEquals(40, wizard.getDefence());
     }
 
     @Test
@@ -82,9 +86,9 @@ public class WizardTest {
     }
 
     @Test
-    public void spellCanIncreaseStrength() {
-        wizard.increaseStrength();
-        assertEquals(100, wizard.getStrength());
+    public void spellCanIncreaseAttack() {
+        wizard.increaseAttack();
+        assertEquals(100, wizard.getAttack());
     }
 
 }

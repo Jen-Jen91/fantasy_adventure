@@ -15,8 +15,8 @@ public class ClericTest {
 
     @Before
     public void before() {
-        cleric = new Cleric(100, 10, ToolType.POTION);
-        player = new Dwarf(20, 30, WeaponType.AXE);
+        cleric = new Cleric(100, 10, 60, ToolType.POTION);
+        player = new Dwarf(20, 30, 50, WeaponType.AXE);
 
     }
 
@@ -26,8 +26,13 @@ public class ClericTest {
     }
 
     @Test
-    public void hasStrength() {
-        assertEquals(10, cleric.getStrength());
+    public void hasAttack() {
+        assertEquals(10, cleric.getAttack());
+    }
+
+    @Test
+    public void hasDefence() {
+        assertEquals(60, cleric.getDefence());
     }
 
     @Test

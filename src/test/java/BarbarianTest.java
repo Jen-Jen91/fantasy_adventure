@@ -16,11 +16,11 @@ public class BarbarianTest {
 
     @Before
     public void before() {
-        barbarian = new Barbarian(100, 50, WeaponType.CLUB);
+        barbarian = new Barbarian(100, 50, 50, WeaponType.CLUB);
         treasure = new Treasure("gold", 100);
-        enemy1 = new Enemy("Orc", 20);
-        enemy2 = new Enemy("Ogre", 50);
-        enemy3 = new Enemy("Werewolf", 140);
+        enemy1 = new Enemy("Orc", 20, 10);
+        enemy2 = new Enemy("Ogre", 50, 20);
+        enemy3 = new Enemy("Werewolf", 90, 50);
     }
 
     @Test
@@ -29,8 +29,13 @@ public class BarbarianTest {
     }
 
     @Test
-    public void hasStrength() {
-        assertEquals(50, barbarian.getStrength());
+    public void hasAttack() {
+        assertEquals(50, barbarian.getAttack());
+    }
+
+    @Test
+    public void hasDefence() {
+        assertEquals(50, barbarian.getDefence());
     }
 
     @Test
@@ -61,13 +66,13 @@ public class BarbarianTest {
     @Test
     public void canFightLose() {
         assertEquals("Enemy wins!", barbarian.fight(enemy3));
-        assertEquals(10, barbarian.getHP());
+        assertEquals(60, barbarian.getHP());
     }
 
     @Test
-    public void weaponCanIncreaseStrength() {
-        barbarian.increaseStrength();
-        assertEquals(80, barbarian.getStrength());
+    public void weaponCanIncreaseAttack() {
+        barbarian.increaseAttack();
+        assertEquals(80, barbarian.getAttack());
     }
 
 }

@@ -9,8 +9,8 @@ public abstract class Spellcaster extends Player implements ICastSpell {
     protected SpellType spell;
     protected Creature creature;
 
-    public Spellcaster(int HP, int strength, SpellType spell, Creature creature) {
-        super(HP, strength);
+    public Spellcaster(int HP, int attack, int defence, SpellType spell, Creature creature) {
+        super(HP, attack, defence);
         this.spell = spell;
         this.creature = creature;
     }
@@ -23,22 +23,22 @@ public abstract class Spellcaster extends Player implements ICastSpell {
         return this.creature;
     }
 
-    public void creatureAddsStrength() {
-        this.strength += this.creature.getDefence();
+    public void creatureAddsDefence() {
+        this.defence += this.creature.getDefence();
     }
 
     public String castSpell(Enemy enemy) {
-        if (this.strength > enemy.getStrength()) {
+        if (this.attack > enemy.getAttack()) {
             return "Player wins!";
-        } else if (this.strength < enemy.getStrength()) {
-            int difference = enemy.getStrength() - this.strength;
+        } else if (this.attack < enemy.getAttack()) {
+            int difference = enemy.getAttack() - this.attack;
             this.HP -= difference;
             return "Enemy wins!";
         }
         return "It's a draw!";
     }
 
-    public void increaseStrength() {
-        this.strength += this.spell.getValue();
+    public void increaseAttack() {
+        this.attack += this.spell.getValue();
     }
 }

@@ -29,11 +29,11 @@ public class RoomTest {
     public void before() {
         treasure = new Treasure("Gem", 100);
         creature = new Creature("cat", 10);
-        enemy1 = new Enemy("Orc", 50);
-        enemy2 = new Enemy("Dragon", 100);
-        player1 = new Dwarf(70, 90, WeaponType.AXE);
-        player2 = new Cleric(100, 20, ToolType.POTION);
-        player3 = new Witch(50, 70, SpellType.ACID_ARROW, creature);
+        enemy1 = new Enemy("Orc", 50, 20);
+        enemy2 = new Enemy("Dragon", 100, 50);
+        player1 = new Dwarf(70, 90, 50, WeaponType.AXE);
+        player2 = new Cleric(100, 20, 40, ToolType.POTION);
+        player3 = new Witch(50, 70, 20, SpellType.ACID_ARROW, creature);
 
         room = new Room(treasure);
     }

@@ -17,11 +17,11 @@ public class KnightTest {
 
     @Before
     public void before() {
-        knight = new Knight(120, 60, WeaponType.SWORD);
+        knight = new Knight(120, 60, 30, WeaponType.SWORD);
         treasure = new Treasure("gold", 100);
-        enemy1 = new Enemy("Orc", 20);
-        enemy2 = new Enemy("Ogre", 60);
-        enemy3 = new Enemy("Werewolf", 90);
+        enemy1 = new Enemy("Orc", 20, 10);
+        enemy2 = new Enemy("Ogre", 60, 30);
+        enemy3 = new Enemy("Werewolf", 90, 50);
     }
 
     @Test
@@ -30,8 +30,13 @@ public class KnightTest {
     }
 
     @Test
-    public void hasStrength() {
-        assertEquals(60, knight.getStrength());
+    public void hasAttack() {
+        assertEquals(60, knight.getAttack());
+    }
+
+    @Test
+    public void hasDefence() {
+        assertEquals(30, knight.getDefence());
     }
 
     @Test
@@ -67,9 +72,9 @@ public class KnightTest {
     }
 
     @Test
-    public void weaponCanIncreaseStrength() {
-        knight.increaseStrength();
-        assertEquals(100, knight.getStrength());
+    public void weaponCanIncreaseAttack() {
+        knight.increaseAttack();
+        assertEquals(100, knight.getAttack());
     }
 
 }

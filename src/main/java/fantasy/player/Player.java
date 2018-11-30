@@ -5,12 +5,14 @@ import java.util.ArrayList;
 public abstract class Player {
 
     protected int HP;
-    protected int strength;
+    protected int attack;
+    protected int defence;
     protected ArrayList<Treasure> treasure;
 
-    public Player(int HP, int strength) {
+    public Player(int HP, int attack, int defence) {
         this.HP = HP;
-        this.strength = strength;
+        this.attack = attack;
+        this.defence = defence;
         this.treasure = new ArrayList<>();
     }
 
@@ -18,8 +20,12 @@ public abstract class Player {
         return this.HP;
     }
 
-    public int getStrength() {
-        return this.strength;
+    public int getAttack() {
+        return this.attack;
+    }
+
+    public int getDefence() {
+        return this.defence;
     }
 
     public int countTreasure() {

@@ -17,11 +17,11 @@ public class DwarfTest {
 
     @Before
     public void before() {
-        dwarf = new Dwarf(50, 30, WeaponType.AXE);
+        dwarf = new Dwarf(50, 30, 60, WeaponType.AXE);
         treasure = new Treasure("gold", 100);
-        enemy1 = new Enemy("Orc", 20);
-        enemy2 = new Enemy("Ogre", 30);
-        enemy3 = new Enemy("Werewolf", 40);
+        enemy1 = new Enemy("Orc", 20, 10);
+        enemy2 = new Enemy("Ogre", 30, 20);
+        enemy3 = new Enemy("Werewolf", 40, 30);
     }
 
     @Test
@@ -30,8 +30,13 @@ public class DwarfTest {
     }
 
     @Test
-    public void hasStrength() {
-        assertEquals(30, dwarf.getStrength());
+    public void hasAttack() {
+        assertEquals(30, dwarf.getAttack());
+    }
+
+    @Test
+    public void hasDefence() {
+        assertEquals(60, dwarf.getDefence());
     }
 
     @Test
@@ -67,9 +72,9 @@ public class DwarfTest {
     }
 
     @Test
-    public void weaponCanIncreaseStrength() {
-        dwarf.increaseStrength();
-        assertEquals(80, dwarf.getStrength());
+    public void weaponCanIncreaseAttack() {
+        dwarf.increaseAttack();
+        assertEquals(80, dwarf.getAttack());
     }
 
 }

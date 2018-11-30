@@ -3,18 +3,25 @@ package fantasy.room;
 public class Enemy {
 
     private String species;
-    private int strength;
+    private int attack;
+    private int defence;
 
-    public Enemy(String species, int strength) {
+    public Enemy(String species, int attack, int defence) {
         this.species = species;
-        this.strength = strength;
+        this.attack = attack;
+        this.defence = defence;
     }
 
     public String getSpecies() {
         return this.species;
     }
 
-    public int getStrength() {
-        return this.strength;
+    public int getAttack() {
+        return this.attack;
     }
+
+    public int getDefence() {
+        return this.defence;
+    }
+
 }

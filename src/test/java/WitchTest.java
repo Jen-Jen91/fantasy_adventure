@@ -20,11 +20,11 @@ public class WitchTest {
     @Before
     public void before() {
         creature = new Creature("Cat", 10);
-        witch = new Witch(70, 50, SpellType.FIREBALL, creature);
+        witch = new Witch(70, 50, 20, SpellType.FIREBALL, creature);
         treasure = new Treasure("gold", 100);
-        enemy1 = new Enemy("Orc", 20);
-        enemy2 = new Enemy("Ogre", 50);
-        enemy3 = new Enemy("Werewolf", 70);
+        enemy1 = new Enemy("Orc", 20, 10);
+        enemy2 = new Enemy("Ogre", 50, 40);
+        enemy3 = new Enemy("Werewolf", 70, 50);
     }
 
     @Test
@@ -33,8 +33,13 @@ public class WitchTest {
     }
 
     @Test
-    public void hasStrength() {
-        assertEquals(50, witch.getStrength());
+    public void hasAttack() {
+        assertEquals(50, witch.getAttack());
+    }
+
+    @Test
+    public void hasDefence() {
+        assertEquals(20, witch.getDefence());
     }
 
     @Test
@@ -48,9 +53,9 @@ public class WitchTest {
     }
 
     @Test
-    public void creatureCanAddStrength() {
-        witch.creatureAddsStrength();
-        assertEquals(60, witch.getStrength());
+    public void creatureCanAddDefence() {
+        witch.creatureAddsDefence();
+        assertEquals(30, witch.getDefence());
     }
 
     @Test
@@ -81,9 +86,9 @@ public class WitchTest {
     }
 
     @Test
-    public void spellCanIncreaseStrength() {
-        witch.increaseStrength();
-        assertEquals(90, witch.getStrength());
+    public void spellCanIncreaseAttack() {
+        witch.increaseAttack();
+        assertEquals(90, witch.getAttack());
     }
 
 }
