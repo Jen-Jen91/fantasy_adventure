@@ -10,7 +10,12 @@ public class EnemyTest {
 
     @Before
     public void before(){
-        enemy = new Enemy("Orc", 30, 20);
+        enemy = new Enemy(30, "Orc", 30, 20);
+    }
+
+    @Test
+    public void hasHP(){
+        assertEquals(30, enemy.getHP());
     }
 
     @Test
@@ -26,6 +31,12 @@ public class EnemyTest {
     @Test
     public void hasDefence(){
         assertEquals(20, enemy.getDefence());
+    }
+
+    @Test
+    public void canSetHP() {
+        enemy.setHP(20);
+        assertEquals(20, enemy.getHP());
     }
 
 }

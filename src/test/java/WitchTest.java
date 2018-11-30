@@ -22,9 +22,9 @@ public class WitchTest {
         creature = new Creature("Cat", 10);
         witch = new Witch(70, 50, 20, SpellType.FIREBALL, creature);
         treasure = new Treasure("gold", 100);
-        enemy1 = new Enemy("Orc", 20, 10);
-        enemy2 = new Enemy("Ogre", 50, 40);
-        enemy3 = new Enemy("Werewolf", 70, 50);
+        enemy1 = new Enemy(20, "Orc", 20, 10);
+        enemy2 = new Enemy(30, "Ogre", 50, 40);
+        enemy3 = new Enemy(50, "Werewolf", 70, 50);
     }
 
     @Test
@@ -70,25 +70,35 @@ public class WitchTest {
     }
 
     @Test
-    public void canCastSpellWin() {
-        assertEquals("Player wins!", witch.castSpell(enemy1));
-    }
-
-    @Test
-    public void canCastSpellDraw() {
-        assertEquals("It's a draw!", witch.castSpell(enemy2));
-    }
-
-    @Test
-    public void canCastSpellLose() {
-        assertEquals("Enemy wins!", witch.castSpell(enemy3));
-        assertEquals(50, witch.getHP());
-    }
-
-    @Test
     public void spellCanIncreaseAttack() {
         witch.increaseAttack();
         assertEquals(90, witch.getAttack());
+    }
+
+//    @Test
+//    public void canCastSpellWin() {
+//        assertEquals("Player wins!", witch.castSpell(enemy1));
+//    }
+//
+//    @Test
+//    public void canCastSpellDraw() {
+//        assertEquals("It's a draw!", witch.castSpell(enemy2));
+//    }
+//
+//    @Test
+//    public void canCastSpellLose() {
+//        assertEquals("Enemy wins!", witch.castSpell(enemy3));
+//        assertEquals(50, witch.getHP());
+//    }
+
+    @Test
+    public void canCastSpellLowDamage() {
+        assertEquals("Player dealt 10 damage", witch.castSpell(enemy3));
+    }
+
+    @Test
+    public void canCastSpellHighDamage() {
+        assertEquals("Player dealt 40 damage", witch.castSpell(enemy1));
     }
 
 }

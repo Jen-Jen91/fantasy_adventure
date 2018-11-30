@@ -19,9 +19,9 @@ public class DwarfTest {
     public void before() {
         dwarf = new Dwarf(50, 30, 60, WeaponType.AXE);
         treasure = new Treasure("gold", 100);
-        enemy1 = new Enemy("Orc", 20, 10);
-        enemy2 = new Enemy("Ogre", 30, 20);
-        enemy3 = new Enemy("Werewolf", 40, 30);
+        enemy1 = new Enemy(20, "Orc", 20, 10);
+        enemy2 = new Enemy(30, "Ogre", 30, 20);
+        enemy3 = new Enemy(50, "Werewolf", 40, 30);
     }
 
     @Test
@@ -56,25 +56,35 @@ public class DwarfTest {
     }
 
     @Test
-    public void canFightWin() {
-        assertEquals("Player wins!", dwarf.fight(enemy1));
-    }
-
-    @Test
-    public void canFightDraw() {
-        assertEquals("It's a draw!", dwarf.fight(enemy2));
-    }
-
-    @Test
-    public void canFightLose() {
-        assertEquals("Enemy wins!", dwarf.fight(enemy3));
-        assertEquals(40, dwarf.getHP());
-    }
-
-    @Test
     public void weaponCanIncreaseAttack() {
         dwarf.increaseAttack();
         assertEquals(80, dwarf.getAttack());
+    }
+
+//    @Test
+//    public void canFightWin() {
+//        assertEquals("Player wins!", dwarf.fight(enemy1));
+//    }
+//
+//    @Test
+//    public void canFightDraw() {
+//        assertEquals("It's a draw!", dwarf.fight(enemy2));
+//    }
+//
+//    @Test
+//    public void canFightLose() {
+//        assertEquals("Enemy wins!", dwarf.fight(enemy3));
+//        assertEquals(40, dwarf.getHP());
+//    }
+
+    @Test
+    public void canFightLowDamage() {
+        assertEquals("Player dealt 10 damage", dwarf.fight(enemy3));
+    }
+
+    @Test
+    public void canFightHighDamage() {
+        assertEquals("Player dealt 20 damage", dwarf.fight(enemy1));
     }
 
 }

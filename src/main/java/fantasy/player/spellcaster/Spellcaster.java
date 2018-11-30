@@ -27,18 +27,31 @@ public abstract class Spellcaster extends Player implements ICastSpell {
         this.defence += this.creature.getDefence();
     }
 
-    public String castSpell(Enemy enemy) {
-        if (this.attack > enemy.getAttack()) {
-            return "Player wins!";
-        } else if (this.attack < enemy.getAttack()) {
-            int difference = enemy.getAttack() - this.attack;
-            this.HP -= difference;
-            return "Enemy wins!";
-        }
-        return "It's a draw!";
-    }
-
     public void increaseAttack() {
         this.attack += this.spell.getValue();
+    }
+
+//    public String castSpell(Enemy enemy) {
+//        if (this.attack > enemy.getAttack()) {
+//            return "Player wins!";
+//        } else if (this.attack < enemy.getAttack()) {
+//            int difference = enemy.getAttack() - this.attack;
+//            this.HP -= difference;
+//            return "Enemy wins!";
+//        }
+//        return "It's a draw!";
+//    }
+
+    public String castSpell(Enemy enemy) {
+        int difference = this.attack - enemy.getDefence();
+        int enemyHP = enemy.getHP();
+
+        if (difference <= 0) {
+            enemy.setHP(enemyHP - 10);
+            return "Player dealt 10 damage";
+        } else {
+            enemy.setHP(enemyHP - difference);
+            return "Player dealt " + difference + " damage";
+        }
     }
 }

@@ -20,16 +20,29 @@ public abstract class Fighter extends Player implements IFight {
         this.attack += this.weapon.getValue();
     }
 
-    public String fight(Enemy enemy) {
-        if (this.attack > enemy.getAttack()) {
-            return "Player wins!";
-        } else if (this.attack < enemy.getAttack()) {
-            int difference = enemy.getAttack() - this.attack;
-            this.HP -= difference;
-            return "Enemy wins!";
-        }
-        return "It's a draw!";
-    }
 
+//    public String fight(Enemy enemy) {
+//        if (this.attack > enemy.getAttack()) {
+//            return "Player wins!";
+//        } else if (this.attack < enemy.getAttack()) {
+//            int difference = enemy.getAttack() - this.attack;
+//            this.HP -= difference;
+//            return "Enemy wins!";
+//        }
+//        return "It's a draw!";
+//    }
+
+    public String fight(Enemy enemy) {
+        int difference = this.attack - enemy.getDefence();
+        int enemyHP = enemy.getHP();
+
+        if (difference <= 0) {
+            enemy.setHP(enemyHP - 10);
+            return "Player dealt 10 damage";
+        } else {
+            enemy.setHP(enemyHP - difference);
+            return "Player dealt " + difference + " damage";
+        }
+    }
 
 }

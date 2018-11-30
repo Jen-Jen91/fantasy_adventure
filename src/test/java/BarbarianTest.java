@@ -4,10 +4,10 @@ import fantasy.room.Enemy;
 import fantasy.room.Treasure;
 import org.junit.Before;
 import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 
 public class BarbarianTest {
+
     Barbarian barbarian;
     Treasure treasure;
     Enemy enemy1;
@@ -18,9 +18,9 @@ public class BarbarianTest {
     public void before() {
         barbarian = new Barbarian(100, 50, 50, WeaponType.CLUB);
         treasure = new Treasure("gold", 100);
-        enemy1 = new Enemy("Orc", 20, 10);
-        enemy2 = new Enemy("Ogre", 50, 20);
-        enemy3 = new Enemy("Werewolf", 90, 50);
+        enemy1 = new Enemy(20, "Orc", 20, 10);
+        enemy2 = new Enemy(40, "Ogre", 50, 20);
+        enemy3 = new Enemy(60, "Werewolf", 90, 50);
     }
 
     @Test
@@ -53,26 +53,37 @@ public class BarbarianTest {
         barbarian.addTreasure(treasure);
         assertEquals(1, barbarian.countTreasure());
     }
-    @Test
-    public void canFightWin() {
-        assertEquals("Player wins!", barbarian.fight(enemy1));
-    }
-
-    @Test
-    public void canFightDraw() {
-        assertEquals("It's a draw!", barbarian.fight(enemy2));
-    }
-
-    @Test
-    public void canFightLose() {
-        assertEquals("Enemy wins!", barbarian.fight(enemy3));
-        assertEquals(60, barbarian.getHP());
-    }
 
     @Test
     public void weaponCanIncreaseAttack() {
         barbarian.increaseAttack();
         assertEquals(80, barbarian.getAttack());
+    }
+
+//    @Test
+//    public void canFightWin() {
+//        assertEquals("Player wins!", barbarian.fight(enemy1));
+//    }
+//
+//    @Test
+//    public void canFightDraw() {
+//        assertEquals("It's a draw!", barbarian.fight(enemy2));
+//    }
+//
+//    @Test
+//    public void canFightLose() {
+//        assertEquals("Enemy wins!", barbarian.fight(enemy3));
+//        assertEquals(60, barbarian.getHP());
+//    }
+
+    @Test
+    public void canFightLowDamage() {
+        assertEquals("Player dealt 10 damage", barbarian.fight(enemy3));
+    }
+
+    @Test
+    public void canFightHighDamage() {
+        assertEquals("Player dealt 40 damage", barbarian.fight(enemy1));
     }
 
 }
