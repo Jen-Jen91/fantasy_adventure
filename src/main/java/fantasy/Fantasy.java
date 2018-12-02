@@ -14,6 +14,7 @@ public class Fantasy {
         this.rooms = new ArrayList<>();
     }
 
+
     public int countPlayers() {
         return this.players.size();
     }
@@ -22,29 +23,52 @@ public class Fantasy {
         return this.rooms.size();
     }
 
-    public void createPlayer(Player player){
+    public void createPlayer(Player player) {
         this.players.add(player);
     }
 
-    public void createRoom(Room room){
+    public void createRoom(Room room) {
         this.rooms.add(room);
     }
 
-    public void addPlayersToRoom(){
+    public void addPlayersToRoom() {
         Room room = this.rooms.remove(0);
-        for (Player player : this.players){
+        for (Player player : this.players) {
             room.addPlayer(player);
         }
     }
 
-    public String checkRoomForTreasure(Room room, Player player){
-       if (room.getTreasure() != null){
-           Treasure treasure = room.getTreasure();
-           player.addTreasure(treasure);
-           room.clearPlayers();
-           return "You picked up " + treasure.getType();
+    public boolean checkRoomForTreasure(Room room) {
+       if (room.getTreasure() != null) {
+           return true;
        }
-       return "Sorry, no treasure for you!";
+       return false;
     }
+
+
+    public String pickUpTreasure(Room room) {
+        if (checkRoomForTreasure(room)) {
+            Treasure treasure = room.getTreasure();
+
+            for (Player player : this.players) {
+                player.addTreasure(treasure);
+            }
+
+            room.clearPlayers();
+            return "You picked up " + treasure.getType();
+        }
+        return "Sorry, no treasure for you!";
+    }
+
+
+    public boolean checkRoomForEnemies(Room room) {
+        if (room.countEnemies() != 0) {
+            return true;
+        }
+        return false;
+    }
+
+
+
 }
 
