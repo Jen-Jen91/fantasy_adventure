@@ -11,7 +11,7 @@ import fantasy.room.Room;
 import fantasy.room.Treasure;
 import org.junit.Before;
 import org.junit.Test;
-
+import java.util.ArrayList;
 import static org.junit.Assert.assertEquals;
 
 public class RoomTest {
@@ -72,6 +72,42 @@ public class RoomTest {
         room.addPlayer(player2);
         room.addPlayer(player3);
         assertEquals(3, room.countPlayers());
+    }
+
+    @Test
+    public void canGetEnemies() {
+        room.addEnemy(enemy1);
+        room.addEnemy(enemy2);
+        ArrayList<Enemy> enemies = new ArrayList<>();
+        enemies.add(enemy1);
+        enemies.add(enemy2);
+        assertEquals(enemies, room.getEnemies());
+    }
+
+    @Test
+    public void canGetPlayers() {
+        room.addPlayer(player1);
+        room.addPlayer(player2);
+        ArrayList<Player> players = new ArrayList<>();
+        players.add(player1);
+        players.add(player2);
+        assertEquals(players, room.getPlayers());
+    }
+
+    @Test
+    public void canRemoveEnemies() {
+        room.addEnemy(enemy1);
+        room.addEnemy(enemy2);
+        room.removeEnemy(enemy1);
+        assertEquals(1, room.countEnemies());
+    }
+
+    @Test
+    public void canRemovePlayers() {
+        room.addPlayer(player1);
+        room.addPlayer(player1);
+        room.removePlayer(player1);
+        assertEquals(1, room.countPlayers());
     }
 
     @Test

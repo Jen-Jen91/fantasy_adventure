@@ -20,6 +20,14 @@ public class Room {
         return this.treasure;
     }
 
+    public ArrayList<Enemy> getEnemies() {
+        return this.enemies;
+    }
+
+    public ArrayList<Player> getPlayers() {
+        return this.players;
+    }
+
     public int countEnemies(){
         return this.enemies.size();
     }
@@ -34,6 +42,16 @@ public class Room {
 
     public void addPlayer(Player player) {
         this.players.add(player);
+    }
+
+    public void removeEnemy(Enemy enemy) {
+        int index = this.enemies.indexOf(enemy);
+        this.enemies.remove(index);
+    }
+
+    public void removePlayer(Player player) {
+        int index = this.players.indexOf(player);
+        this.players.remove(index);
     }
 
     public void clearEnemies() {

@@ -1,11 +1,13 @@
 import fantasy.Fantasy;
 import fantasy.player.Player;
 import fantasy.player.fighter.Dwarf;
+import fantasy.player.fighter.Fighter;
 import fantasy.player.fighter.WeaponType;
 import fantasy.player.healer.Cleric;
 import fantasy.player.healer.ToolType;
 import fantasy.player.spellcaster.Creature;
 import fantasy.player.spellcaster.SpellType;
+import fantasy.player.spellcaster.Spellcaster;
 import fantasy.player.spellcaster.Wizard;
 import fantasy.room.Enemy;
 import fantasy.room.Room;
@@ -92,6 +94,71 @@ public class FantasyTest {
         assertEquals(true, fantasy.checkRoomForEnemies(room));
     }
 
+    @Test
+    public void enemiesCanAttack() {
+        room.addEnemy(enemy);
+        fantasy.enemiesAttack(room, player1);
+        assertEquals(40, player1.getHP());
+    }
+
+    @Test
+    public void fightersCanAttack() {
+        room.addEnemy(enemy);
+        fantasy.fightersAttack((Fighter) player1, room);
+        assertEquals(-20, enemy.getHP());
+    }
+
+    @Test
+    public void spellcastersCanAttack() {
+        room.addEnemy(enemy);
+        fantasy.spellcastersAttack((Spellcaster) player3, room);
+        assertEquals(10, enemy.getHP());
+    }
+
+    @Test
+    public void clericsCanHeal() {
+        room.addPlayer(player1);
+        room.addPlayer(player3);
+        fantasy.clericsHeal((Cleric) player2, room);
+        assertEquals(100, player1.getHP());
+        assertEquals(110, player3.getHP());
+    }
+
+    @Test
+    public void canCheckEnemyHP() {
+        room.addEnemy(enemy);
+        assertEquals("Enemy still has HP", fantasy.checkEnemyHP(room));
+    }
+
+    @Test
+    public void canCheckEnemyDead() {
+        room.addEnemy(enemy);
+        enemy.setHP(0);
+        assertEquals("Enemy is dead", fantasy.checkEnemyHP(room));
+        assertEquals(0, room.countEnemies());
+    }
+
+    @Test
+    public void canCheckPlayerHP() {
+        room.addPlayer(player1);
+        assertEquals("Player still has HP", fantasy.checkPlayerHP(room));
+    }
+
+    @Test
+    public void canCheckPlayerDead() {
+        room.addPlayer(player1);
+        player1.setHP(0);
+        assertEquals("Player is dead", fantasy.checkPlayerHP(room));
+        assertEquals(0, room.countPlayers());
+    }
+
+//    @Test
+//    public void canFightEnemies() {
+//        room.addEnemy(enemy);
+//        room.addPlayer(player1);
+//        fantasy.fightEnemies(room);
+//        assertEquals(0, room.countEnemies());
+//    }
 
 }
 
