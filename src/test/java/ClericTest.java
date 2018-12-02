@@ -16,7 +16,6 @@ public class ClericTest {
     public void before() {
         cleric = new Cleric(100, 10, 60, ToolType.POTION);
         player = new Ranger(20, 30, 50, WeaponType.CROSSBOW);
-
     }
 
     @Test

@@ -36,10 +36,7 @@ public class Fantasy {
     }
 
     public boolean checkRoomsAvailable() {
-        if (this.rooms.size() > 0) {
-            return true;
-        }
-        return false;
+        return this.rooms.size() > 0;
     }
 
     public String completeQuest() {
@@ -59,10 +56,7 @@ public class Fantasy {
     }
 
     public boolean checkRoomForTreasure(Room room) {
-       if (room.getTreasure() != null) {
-           return true;
-       }
-       return false;
+       return room.getTreasure() != null;
     }
 
     public String pickUpTreasure(Room room) {
@@ -78,10 +72,7 @@ public class Fantasy {
 
 
     public boolean checkRoomForEnemies(Room room) {
-        if (room.countEnemies() != 0) {
-            return true;
-        }
-        return false;
+        return room.countEnemies() != 0;
     }
 
     public void enemiesAttack(Room room, Player player) {

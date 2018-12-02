@@ -15,6 +15,7 @@ import fantasy.room.Treasure;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class FantasyTest {
 
@@ -86,7 +87,7 @@ public class FantasyTest {
 
     @Test
     public void canCheckForTreasure() {
-        assertEquals(true, fantasy.checkRoomForTreasure(room));
+        assertTrue(fantasy.checkRoomForTreasure(room));
     }
 
     @Test
@@ -101,7 +102,7 @@ public class FantasyTest {
     @Test
     public void canCheckForEnemies() {
         room.addEnemy(enemy);
-        assertEquals(true, fantasy.checkRoomForEnemies(room));
+        assertTrue(fantasy.checkRoomForEnemies(room));
     }
 
     @Test

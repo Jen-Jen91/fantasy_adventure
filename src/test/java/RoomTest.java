@@ -4,8 +4,6 @@ import fantasy.player.fighter.WeaponType;
 import fantasy.player.healer.Cleric;
 import fantasy.player.healer.ToolType;
 import fantasy.player.spellcaster.Creature;
-import fantasy.player.spellcaster.SpellType;
-import fantasy.player.spellcaster.Warlock;
 import fantasy.room.Enemy;
 import fantasy.room.Room;
 import fantasy.room.Treasure;
@@ -13,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import java.util.ArrayList;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class RoomTest {
 
@@ -23,7 +22,6 @@ public class RoomTest {
     Enemy enemy2;
     Player player1;
     Player player2;
-    Player player3;
 
     @Before
     public void before() {
@@ -33,7 +31,6 @@ public class RoomTest {
         enemy2 = new Enemy(50, "Dragon", 100, 50);
         player1 = new Ranger(70, 40, 50, WeaponType.CROSSBOW);
         player2 = new Cleric(100, 20, 40, ToolType.POTION);
-        player3 = new Warlock(50, 70, 20, SpellType.ACID_ARROW, creature);
 
         room = new Room(treasure);
     }
@@ -46,7 +43,7 @@ public class RoomTest {
     @Test
     public void canHaveNoTreasure() {
         room = new Room(null);
-        assertEquals(null, room.getTreasure());
+        assertNull(room.getTreasure());
     }
 
     @Test
@@ -70,8 +67,7 @@ public class RoomTest {
     public void canAddPlayer() {
         room.addPlayer(player1);
         room.addPlayer(player2);
-        room.addPlayer(player3);
-        assertEquals(3, room.countPlayers());
+        assertEquals(2, room.countPlayers());
     }
 
     @Test
@@ -105,7 +101,7 @@ public class RoomTest {
     @Test
     public void canRemovePlayers() {
         room.addPlayer(player1);
-        room.addPlayer(player1);
+        room.addPlayer(player2);
         room.removePlayer(player1);
         assertEquals(1, room.countPlayers());
     }
@@ -122,7 +118,6 @@ public class RoomTest {
     public void canClearPlayers() {
         room.addPlayer(player1);
         room.addPlayer(player2);
-        room.addPlayer(player3);
         room.clearPlayers();
         assertEquals(0, room.countPlayers());
     }

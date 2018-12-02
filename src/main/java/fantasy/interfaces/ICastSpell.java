@@ -3,6 +3,6 @@ import fantasy.room.Enemy;
 
 public interface ICastSpell {
 
-    public String castSpell(Enemy enemy);
+    String castSpell(Enemy enemy);
 
 }

@@ -12,15 +12,13 @@ public class PaladinTest {
     Treasure treasure;
     Enemy enemy1;
     Enemy enemy2;
-    Enemy enemy3;
 
     @Before
     public void before() {
         paladin = new Paladin(120, 60, 30, WeaponType.SWORD);
         treasure = new Treasure("gold", 100);
         enemy1 = new Enemy(20, "Orc", 20, 10);
-        enemy2 = new Enemy(30, "Ogre", 60, 30);
-        enemy3 = new Enemy(60, "Werewolf", 90, 50);
+        enemy2 = new Enemy(60, "Werewolf", 90, 50);
     }
 
     @Test
@@ -85,7 +83,7 @@ public class PaladinTest {
 
     @Test
     public void canFightLowDamage() {
-        assertEquals("Player dealt 10 damage", paladin.fight(enemy3));
+        assertEquals("Player dealt 10 damage", paladin.fight(enemy2));
     }
 
     @Test

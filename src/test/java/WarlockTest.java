@@ -15,7 +15,6 @@ public class WarlockTest {
     Treasure treasure;
     Enemy enemy1;
     Enemy enemy2;
-    Enemy enemy3;
 
     @Before
     public void before() {
@@ -24,8 +23,7 @@ public class WarlockTest {
         warlock = new Warlock(70, 50, 20, SpellType.FIREBALL, creature1);
         treasure = new Treasure("gold", 100);
         enemy1 = new Enemy(20, "Orc", 20, 10);
-        enemy2 = new Enemy(30, "Ogre", 50, 40);
-        enemy3 = new Enemy(50, "Werewolf", 70, 50);
+        enemy2 = new Enemy(50, "Werewolf", 70, 50);
     }
 
     @Test
@@ -90,7 +88,7 @@ public class WarlockTest {
 
     @Test
     public void canCastSpellLowDamage() {
-        assertEquals("Player dealt 10 damage", warlock.castSpell(enemy3));
+        assertEquals("Player dealt 10 damage", warlock.castSpell(enemy2));
     }
 
     @Test

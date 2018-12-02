@@ -15,7 +15,6 @@ public class WizardTest {
     Treasure treasure;
     Enemy enemy1;
     Enemy enemy2;
-    Enemy enemy3;
 
     @Before
     public void before() {
@@ -24,8 +23,7 @@ public class WizardTest {
         wizard = new Wizard(70, 50, 20, SpellType.LIGHTNING_STRIKE, creature1);
         treasure = new Treasure("gold", 100);
         enemy1 = new Enemy(20, "Orc", 20, 20);
-        enemy2 = new Enemy(40, "Ogre", 50, 30);
-        enemy3 = new Enemy(60, "Werewolf", 70, 40);
+        enemy2 = new Enemy(60, "Werewolf", 70, 40);
     }
 
     @Test
@@ -90,7 +88,7 @@ public class WizardTest {
 
     @Test
     public void canCastSpellLowDamage() {
-        assertEquals("Player dealt 10 damage", wizard.castSpell(enemy3));
+        assertEquals("Player dealt 10 damage", wizard.castSpell(enemy2));
     }
 
     @Test

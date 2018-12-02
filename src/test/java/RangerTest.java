@@ -12,15 +12,13 @@ public class RangerTest {
     Treasure treasure;
     Enemy enemy1;
     Enemy enemy2;
-    Enemy enemy3;
 
     @Before
     public void before() {
         ranger = new Ranger(50, 30, 30, WeaponType.CROSSBOW);
         treasure = new Treasure("gold", 100);
         enemy1 = new Enemy(20, "Orc", 20, 10);
-        enemy2 = new Enemy(30, "Ogre", 30, 20);
-        enemy3 = new Enemy(50, "Werewolf", 40, 30);
+        enemy2 = new Enemy(50, "Werewolf", 40, 30);
     }
 
     @Test
@@ -68,7 +66,7 @@ public class RangerTest {
 
     @Test
     public void canFightLowDamage() {
-        assertEquals("Player dealt 10 damage", ranger.fight(enemy3));
+        assertEquals("Player dealt 10 damage", ranger.fight(enemy2));
     }
 
     @Test

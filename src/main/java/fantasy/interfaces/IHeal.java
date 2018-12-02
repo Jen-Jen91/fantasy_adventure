@@ -3,6 +3,6 @@ import fantasy.player.Player;
 
 public interface IHeal {
 
-    public String heal(Player player);
+    String heal(Player player);
 
 }

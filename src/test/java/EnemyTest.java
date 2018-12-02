@@ -6,7 +6,6 @@ import fantasy.player.healer.ToolType;
 import fantasy.room.Enemy;
 import org.junit.Before;
 import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 
 public class EnemyTest {

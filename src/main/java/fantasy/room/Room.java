@@ -1,5 +1,4 @@
 package fantasy.room;
-
 import fantasy.player.Player;
 import java.util.ArrayList;
 
@@ -45,13 +44,11 @@ public class Room {
     }
 
     public void removeEnemy(Enemy enemy) {
-        int index = this.enemies.indexOf(enemy);
-        this.enemies.remove(index);
+        this.enemies.remove(enemy);
     }
 
     public void removePlayer(Player player) {
-        int index = this.players.indexOf(player);
-        this.players.remove(index);
+        this.players.remove(player);
     }
 
     public void clearEnemies() {
