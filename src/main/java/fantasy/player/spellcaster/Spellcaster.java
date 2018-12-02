@@ -1,7 +1,6 @@
 package fantasy.player.spellcaster;
 import fantasy.interfaces.ICastSpell;
 import fantasy.player.Player;
-import fantasy.player.fighter.WeaponType;
 import fantasy.room.Enemy;
 
 public abstract class Spellcaster extends Player implements ICastSpell {
@@ -19,8 +18,16 @@ public abstract class Spellcaster extends Player implements ICastSpell {
         return this.spell;
     }
 
+    public void setSpell(SpellType spell) {
+        this.spell = spell;
+    }
+
     public Creature getCreature() {
         return this.creature;
+    }
+
+    public void setCreature(Creature creature) {
+        this.creature = creature;
     }
 
     public void creatureAddsDefence() {

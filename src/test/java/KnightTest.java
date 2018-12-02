@@ -40,8 +40,14 @@ public class KnightTest {
     }
 
     @Test
-    public void hasEquipment() {
+    public void hasWeapong() {
         assertEquals(WeaponType.SWORD, knight.getWeapon());
+    }
+
+    @Test
+    public void canChangeWeapon() {
+        knight.setWeapon(WeaponType.AXE);
+        assertEquals(WeaponType.AXE, knight.getWeapon());
     }
 
     @Test

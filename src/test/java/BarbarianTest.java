@@ -39,8 +39,14 @@ public class BarbarianTest {
     }
 
     @Test
-    public void hasEquipment() {
+    public void hasWeapon() {
         assertEquals(WeaponType.CLUB, barbarian.getWeapon());
+    }
+
+    @Test
+    public void canChangeWeapon() {
+        barbarian.setWeapon(WeaponType.AXE);
+        assertEquals(WeaponType.AXE, barbarian.getWeapon());
     }
 
     @Test

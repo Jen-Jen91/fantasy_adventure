@@ -40,8 +40,14 @@ public class DwarfTest {
     }
 
     @Test
-    public void hasEquipment() {
+    public void hasWeapon() {
         assertEquals(WeaponType.AXE, dwarf.getWeapon());
+    }
+
+    @Test
+    public void canChangeWeapon() {
+        dwarf.setWeapon(WeaponType.CLUB);
+        assertEquals(WeaponType.CLUB, dwarf.getWeapon());
     }
 
     @Test

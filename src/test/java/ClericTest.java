@@ -36,8 +36,14 @@ public class ClericTest {
     }
 
     @Test
-    public void hasEquipment() {
+    public void hasTool() {
         assertEquals(ToolType.POTION, cleric.getTool());
+    }
+
+    @Test
+    public void canChangeTool() {
+        cleric.setTool(ToolType.HERBS);
+        assertEquals(ToolType.HERBS, cleric.getTool());
     }
 
     @Test

@@ -11,7 +11,8 @@ import static org.junit.Assert.assertEquals;
 public class WitchTest {
 
     Witch witch;
-    Creature creature;
+    Creature creature1;
+    Creature creature2;
     Treasure treasure;
     Enemy enemy1;
     Enemy enemy2;
@@ -19,8 +20,9 @@ public class WitchTest {
 
     @Before
     public void before() {
-        creature = new Creature("Cat", 10);
-        witch = new Witch(70, 50, 20, SpellType.FIREBALL, creature);
+        creature1 = new Creature("Cat", 10);
+        creature2 = new Creature("Dragon", 30);
+        witch = new Witch(70, 50, 20, SpellType.FIREBALL, creature1);
         treasure = new Treasure("gold", 100);
         enemy1 = new Enemy(20, "Orc", 20, 10);
         enemy2 = new Enemy(30, "Ogre", 50, 40);
@@ -43,13 +45,25 @@ public class WitchTest {
     }
 
     @Test
-    public void hasEquipment() {
+    public void hasSpell() {
         assertEquals(SpellType.FIREBALL, witch.getSpell());
     }
 
     @Test
+    public void canChangeSpell() {
+        witch.setSpell(SpellType.ACID_ARROW);
+        assertEquals(SpellType.ACID_ARROW, witch.getSpell());
+    }
+
+    @Test
     public void hasCreature() {
-        assertEquals(creature, witch.getCreature());
+        assertEquals(creature1, witch.getCreature());
+    }
+
+    @Test
+    public void canChangeCreature() {
+        witch.setCreature(creature2);
+        assertEquals(creature2, witch.getCreature());
     }
 
     @Test

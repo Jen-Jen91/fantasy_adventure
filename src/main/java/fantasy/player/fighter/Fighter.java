@@ -16,6 +16,10 @@ public abstract class Fighter extends Player implements IFight {
         return this.weapon;
     }
 
+    public void setWeapon(WeaponType weapon) {
+        this.weapon = weapon;
+    }
+
     public void increaseAttack() {
         this.attack += this.weapon.getValue();
     }

@@ -1,4 +1,5 @@
 package fantasy.room;
+import fantasy.player.Player;
 
 public class Enemy {
 
@@ -32,6 +33,19 @@ public class Enemy {
 
     public void setHP(int newHP) {
         this.HP = newHP;
+    }
+
+    public String fight(Player player) {
+        int difference = this.attack - player.getDefence();
+        int playerHP = player.getHP();
+
+        if (difference <= 0) {
+            player.setHP(playerHP - 10);
+            return "Enemy dealt 10 damage";
+        } else {
+            player.setHP(playerHP - difference);
+            return "Enemy dealt " + difference + " damage";
+        }
     }
 
 }

@@ -11,7 +11,8 @@ import static org.junit.Assert.assertEquals;
 public class WizardTest {
 
     Wizard wizard;
-    Creature creature;
+    Creature creature1;
+    Creature creature2;
     Treasure treasure;
     Enemy enemy1;
     Enemy enemy2;
@@ -19,8 +20,9 @@ public class WizardTest {
 
     @Before
     public void before() {
-        creature = new Creature("Raven", 20);
-        wizard = new Wizard(70, 50, 20, SpellType.LIGHTNING_STRIKE, creature);
+        creature1 = new Creature("Raven", 20);
+        creature2 = new Creature("Dragon", 30);
+        wizard = new Wizard(70, 50, 20, SpellType.LIGHTNING_STRIKE, creature1);
         treasure = new Treasure("gold", 100);
         enemy1 = new Enemy(20, "Orc", 20, 20);
         enemy2 = new Enemy(40, "Ogre", 50, 30);
@@ -43,13 +45,25 @@ public class WizardTest {
     }
 
     @Test
-    public void hasEquipment() {
+    public void hasSpell() {
         assertEquals(SpellType.LIGHTNING_STRIKE, wizard.getSpell());
     }
 
     @Test
+    public void canChangeSpell() {
+        wizard.setSpell(SpellType.ACID_ARROW);
+        assertEquals(SpellType.ACID_ARROW, wizard.getSpell());
+    }
+
+    @Test
     public void hasCreature() {
-        assertEquals(creature, wizard.getCreature());
+        assertEquals(creature1, wizard.getCreature());
+    }
+
+    @Test
+    public void canChangeCreature() {
+        wizard.setCreature(creature2);
+        assertEquals(creature2, wizard.getCreature());
     }
 
     @Test
