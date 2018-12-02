@@ -35,10 +35,26 @@ public class Fantasy {
         this.rooms.add(room);
     }
 
+    public boolean checkRoomsAvailable() {
+        if (this.rooms.size() > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public String completeQuest() {
+        if (!checkRoomsAvailable()) {
+            return "Congratulations! You have completed your quest";
+        }
+        return "Your journey continues...";
+    }
+
     public void addPlayersToRoom() {
-        Room room = this.rooms.remove(0);
-        for (Player player : this.players) {
-            room.addPlayer(player);
+        if (checkRoomsAvailable()) {
+            Room room = this.rooms.remove(0);
+            for (Player player : this.players) {
+                room.addPlayer(player);
+            }
         }
     }
 
@@ -49,16 +65,12 @@ public class Fantasy {
        return false;
     }
 
-
     public String pickUpTreasure(Room room) {
         if (checkRoomForTreasure(room)) {
             Treasure treasure = room.getTreasure();
-
             for (Player player : this.players) {
                 player.addTreasure(treasure);
             }
-
-            room.clearPlayers();
             return "You picked up " + treasure.getType();
         }
         return "Sorry, no treasure for you!";
@@ -71,31 +83,6 @@ public class Fantasy {
         }
         return false;
     }
-
-
-//    public void fightEnemies(Room room) {
-//        if (checkRoomForEnemies(room)) {
-//
-//            while (room.countEnemies() > 0 && room.countPlayers() > 0) {
-//                for (Player player : this.players) {
-//                    if (player instanceof Fighter) {
-//                        Fighter fighter = (Fighter) player;
-//                        fightersAttack(fighter, room);
-//                    } else if (player instanceof Spellcaster) {
-//                        Spellcaster spellcaster = (Spellcaster) player;
-//                        spellcastersAttack(spellcaster, room);
-//                    } else if (player instanceof Cleric) {
-//                        Cleric cleric = (Cleric) player;
-//                        clericsHeal(cleric, room);
-//                    }
-//                    checkEnemyHP(room);
-//                    enemiesAttack(room, player);
-//                    checkPlayerHP(room);
-//                }
-//            }
-//        }
-//    }
-
 
     public void enemiesAttack(Room room, Player player) {
         for (Enemy enemy : room.getEnemies()) {
@@ -140,6 +127,30 @@ public class Fantasy {
         }
         return "Player still has HP";
     }
+
+
+//    public void fightEnemies(Room room) {
+//        if (checkRoomForEnemies(room)) {
+//
+//            while (room.countEnemies() > 0 && room.countPlayers() > 0) {
+//                for (Player player : this.players) {
+//                    if (player instanceof Fighter) {
+//                        Fighter fighter = (Fighter) player;
+//                        fightersAttack(fighter, room);
+//                    } else if (player instanceof Spellcaster) {
+//                        Spellcaster spellcaster = (Spellcaster) player;
+//                        spellcastersAttack(spellcaster, room);
+//                    } else if (player instanceof Cleric) {
+//                        Cleric cleric = (Cleric) player;
+//                        clericsHeal(cleric, room);
+//                    }
+//                    checkEnemyHP(room);
+//                    enemiesAttack(room, player);
+//                    checkPlayerHP(room);
+//                }
+//            }
+//        }
+//    }
 
 }
 

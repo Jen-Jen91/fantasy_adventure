@@ -5,7 +5,6 @@ import fantasy.room.Enemy;
 import fantasy.room.Treasure;
 import org.junit.Before;
 import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 
 public class WizardTest {
@@ -89,22 +88,6 @@ public class WizardTest {
         assertEquals(100, wizard.getAttack());
     }
 
-//    @Test
-//    public void canCastSpellWin() {
-//        assertEquals("Player wins!", wizard.castSpell(enemy1));
-//    }
-//
-//    @Test
-//    public void canCastSpellDraw() {
-//        assertEquals("It's a draw!", wizard.castSpell(enemy2));
-//    }
-//
-//    @Test
-//    public void canCastSpellLose() {
-//        assertEquals("Enemy wins!", wizard.castSpell(enemy3));
-//        assertEquals(50, wizard.getHP());
-//    }
-
     @Test
     public void canCastSpellLowDamage() {
         assertEquals("Player dealt 10 damage", wizard.castSpell(enemy3));
@@ -113,6 +96,13 @@ public class WizardTest {
     @Test
     public void canCastSpellHighDamage() {
         assertEquals("Player dealt 30 damage", wizard.castSpell(enemy1));
+    }
+
+    @Test
+    public void canHealSelf() {
+        wizard.healSelf();
+        assertEquals(90, wizard.getHP());
+        assertEquals(30, wizard.getAttack());
     }
 
 }

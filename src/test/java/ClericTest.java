@@ -1,11 +1,10 @@
 import fantasy.player.Player;
-import fantasy.player.fighter.Dwarf;
+import fantasy.player.fighter.Ranger;
 import fantasy.player.fighter.WeaponType;
 import fantasy.player.healer.Cleric;
 import fantasy.player.healer.ToolType;
 import org.junit.Before;
 import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 
 public class ClericTest {
@@ -16,7 +15,7 @@ public class ClericTest {
     @Before
     public void before() {
         cleric = new Cleric(100, 10, 60, ToolType.POTION);
-        player = new Dwarf(20, 30, 50, WeaponType.AXE);
+        player = new Ranger(20, 30, 50, WeaponType.CROSSBOW);
 
     }
 
@@ -38,6 +37,23 @@ public class ClericTest {
     @Test
     public void hasTool() {
         assertEquals(ToolType.POTION, cleric.getTool());
+    }
+
+    @Test
+    public void hasHolySymbol() {
+        assertEquals(10, cleric.getHolySymbol());
+    }
+
+    @Test
+    public void canChangeHolySymbol() {
+        cleric.setHolySymbol(15);
+        assertEquals(15, cleric.getHolySymbol());
+    }
+
+    @Test
+    public void holySymbolIncreasesDefence() {
+        cleric.holySymbolAddsDefence();
+        assertEquals(70, cleric.getDefence());
     }
 
     @Test

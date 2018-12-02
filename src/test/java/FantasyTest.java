@@ -1,6 +1,6 @@
 import fantasy.Fantasy;
 import fantasy.player.Player;
-import fantasy.player.fighter.Dwarf;
+import fantasy.player.fighter.Ranger;
 import fantasy.player.fighter.Fighter;
 import fantasy.player.fighter.WeaponType;
 import fantasy.player.healer.Cleric;
@@ -34,42 +34,54 @@ public class FantasyTest {
         enemy = new Enemy(20, "Orc", 20, 20);
         room = new Room(treasure);
         creature = new Creature("Raven", 20);
-        player1 = new Dwarf(50, 60, 40, WeaponType.AXE);
+        player1 = new Ranger(50, 30, 40, WeaponType.CROSSBOW);
         player2 = new Cleric(60, 20, 50, ToolType.POTION);
         player3 = new Wizard(60, 20, 50, SpellType.FIREBALL, creature);
+
+        fantasy.createRoom(room);
+        fantasy.createPlayer(player1);
+        fantasy.createPlayer(player2);
+        fantasy.createPlayer(player3);
     }
 
     @Test
-    public void startsWithNoRooms() {
-        assertEquals(0, fantasy.countRooms());
+    public void canCountRooms() {
+        assertEquals(1, fantasy.countRooms());
     }
 
     @Test
-    public void startsWithNoPlayers() {
-        assertEquals(0, fantasy.countPlayers());
+    public void canCountPlayers() {
+        assertEquals(3, fantasy.countPlayers());
     }
 
     @Test
     public void canAddPlayers() {
         fantasy.createPlayer(player1);
-        fantasy.createPlayer(player2);
-        assertEquals(2, fantasy.countPlayers());
+        assertEquals(4, fantasy.countPlayers());
     }
 
     @Test
     public void canAddRooms() {
         fantasy.createRoom(room);
-        assertEquals(1, fantasy.countRooms());
+        assertEquals(2, fantasy.countRooms());
+    }
+
+    @Test
+    public void canCheckRoomsAvailable() {
+        fantasy.createRoom(room);
+        assertEquals(true, fantasy.checkRoomsAvailable());
     }
 
     @Test
     public void canAddPlayerToRoom() {
-        fantasy.createRoom(room);
-        fantasy.createPlayer(player1);
-        fantasy.createPlayer(player2);
-        fantasy.createPlayer(player3);
         fantasy.addPlayersToRoom();
         assertEquals(3, room.countPlayers());
+    }
+
+    @Test
+    public void canCompleteQuest() {
+        fantasy.addPlayersToRoom();
+        assertEquals("Congratulations! You have completed your quest", fantasy.completeQuest());
     }
 
     @Test
@@ -79,13 +91,11 @@ public class FantasyTest {
 
     @Test
     public void canPickUpTreasure() {
-        fantasy.createPlayer(player1);
-        fantasy.createPlayer(player2);
-        fantasy.createRoom(room);
         fantasy.addPlayersToRoom();
         assertEquals("You picked up Gem", fantasy.pickUpTreasure(room));
         assertEquals(1, player1.countTreasure());
         assertEquals(1, player2.countTreasure());
+        assertEquals(1, player3.countTreasure());
     }
 
     @Test
@@ -105,7 +115,7 @@ public class FantasyTest {
     public void fightersCanAttack() {
         room.addEnemy(enemy);
         fantasy.fightersAttack((Fighter) player1, room);
-        assertEquals(-20, enemy.getHP());
+        assertEquals(10, enemy.getHP());
     }
 
     @Test

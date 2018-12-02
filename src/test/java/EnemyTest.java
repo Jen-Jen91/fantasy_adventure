@@ -1,5 +1,5 @@
 import fantasy.player.Player;
-import fantasy.player.fighter.Dwarf;
+import fantasy.player.fighter.Ranger;
 import fantasy.player.fighter.WeaponType;
 import fantasy.player.healer.Cleric;
 import fantasy.player.healer.ToolType;
@@ -18,7 +18,7 @@ public class EnemyTest {
     @Before
     public void before(){
         enemy = new Enemy(30, "Orc", 30, 20);
-        player1 = new Dwarf(60, 60, 50, WeaponType.AXE);
+        player1 = new Ranger(60, 60, 50, WeaponType.AXE);
         player2 = new Cleric(50, 20, 20, ToolType.HERBS);
     }
 

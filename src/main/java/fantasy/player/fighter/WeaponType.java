@@ -7,7 +7,8 @@ public enum WeaponType {
     SWORD(40),
     MACE(40),
     DAGGER(10),
-    SPEAR(20);
+    SPEAR(20),
+    CROSSBOW(40);
 
     private final int value;
 

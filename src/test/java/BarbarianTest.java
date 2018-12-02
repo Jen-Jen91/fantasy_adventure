@@ -66,22 +66,6 @@ public class BarbarianTest {
         assertEquals(80, barbarian.getAttack());
     }
 
-//    @Test
-//    public void canFightWin() {
-//        assertEquals("Player wins!", barbarian.fight(enemy1));
-//    }
-//
-//    @Test
-//    public void canFightDraw() {
-//        assertEquals("It's a draw!", barbarian.fight(enemy2));
-//    }
-//
-//    @Test
-//    public void canFightLose() {
-//        assertEquals("Enemy wins!", barbarian.fight(enemy3));
-//        assertEquals(60, barbarian.getHP());
-//    }
-
     @Test
     public void canFightLowDamage() {
         assertEquals("Player dealt 10 damage", barbarian.fight(enemy3));
@@ -90,6 +74,13 @@ public class BarbarianTest {
     @Test
     public void canFightHighDamage() {
         assertEquals("Player dealt 40 damage", barbarian.fight(enemy1));
+    }
+
+    @Test
+    public void canGoBerserk() {
+        barbarian.setHP(10);
+        barbarian.berserk();
+        assertEquals(80, barbarian.getAttack());
     }
 
 }

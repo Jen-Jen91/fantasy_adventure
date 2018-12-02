@@ -6,4 +6,10 @@ public class Barbarian extends Fighter {
         super(HP, attack, defence, weapon);
     }
 
+    public void berserk() {
+        if (this.HP <= 10) {
+            this.attack += 30;
+        }
+    }
+
 }

@@ -1,11 +1,11 @@
 import fantasy.player.Player;
-import fantasy.player.fighter.Dwarf;
+import fantasy.player.fighter.Ranger;
 import fantasy.player.fighter.WeaponType;
 import fantasy.player.healer.Cleric;
 import fantasy.player.healer.ToolType;
 import fantasy.player.spellcaster.Creature;
 import fantasy.player.spellcaster.SpellType;
-import fantasy.player.spellcaster.Witch;
+import fantasy.player.spellcaster.Warlock;
 import fantasy.room.Enemy;
 import fantasy.room.Room;
 import fantasy.room.Treasure;
@@ -31,9 +31,9 @@ public class RoomTest {
         creature = new Creature("cat", 10);
         enemy1 = new Enemy(20, "Orc", 50, 20);
         enemy2 = new Enemy(50, "Dragon", 100, 50);
-        player1 = new Dwarf(70, 90, 50, WeaponType.AXE);
+        player1 = new Ranger(70, 40, 50, WeaponType.CROSSBOW);
         player2 = new Cleric(100, 20, 40, ToolType.POTION);
-        player3 = new Witch(50, 70, 20, SpellType.ACID_ARROW, creature);
+        player3 = new Warlock(50, 70, 20, SpellType.ACID_ARROW, creature);
 
         room = new Room(treasure);
     }
